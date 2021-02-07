@@ -1,0 +1,9 @@
+<div
+      cdkDropList
+      id="doneList"
+      [cdkDropListData]="playBoookLists"
+      cdkDropListConnectedTo="sliderList"
+      class="bookContainer"
+      (cdkDropListDropped)="drop($event)">
+      <div [ngStyle]="item.color?{'background': item.color} : {'background-image': 'url(' + item?.url + ')', 'background-size': 'cover','background-repeat': 'no-repeat','background-position': 'center'}" *ngFor="let item of playBoookLists" cdkDrag></div>
+</div>

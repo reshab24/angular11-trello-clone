@@ -1,0 +1,11 @@
+<div
+cdkDropList
+#imagesList="cdkDropList"
+[cdkDropListData]="imagesLists"
+cdkDropListConnectedTo="sliderList"
+class="imagesContainer"
+(cdkDropListDropped)="drop($event)">
+  <div class="example-box" [ngStyle]="{'background-image': 'url(' + item?.url + ')', 'background-size': 'cover','background-repeat': 'no-repeat','background-position': 'center'}"
+  *ngFor="let item of imagesLists" cdkDrag>
+  </div>
+</div>
