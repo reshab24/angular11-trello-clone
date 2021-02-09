@@ -13,16 +13,46 @@ export interface dragTypes {
 })
 export class AppComponent {
 
-  sliderListColors: dragTypes[] = [
-    { color: "red" },
-    { color: "green" },
-    { color: "blue" },
-    { color: "orange" },
+  sliderListColors: any[] = [
+    {
+      id: 1,
+      color: "red",
+      items: [
+
+      ]
+    },
+    {
+      id: 2,
+      color: "green",
+      items: [
+
+      ]
+    },
+    {
+      id: 3,
+      color: "blue",
+      items: [
+
+      ]
+    },
+    {
+      id: 4,
+      color: "orange",
+      items: [
+
+      ]
+    },
+
   ];
 
-  playBookList: dragTypes[] = [
-    { color: "red" },
-    { url: "https://picsum.photos/id/27/200/200" },
+  playBookList: any[] = [
+    {
+      id: 5,
+      color: "yellow",
+      items: [
+
+      ]
+    },
   ];
 
   images: dragTypes[] = [
@@ -35,12 +65,30 @@ export class AppComponent {
   drop(event: CdkDragDrop<string[]>) {
 
     if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      // moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       transferArrayItem(event.previousContainer.data,
         event.container.data,
         event.previousIndex,
         event.currentIndex);
+    }
+  }
+
+  dropGroup(event: CdkDragDrop<string[]>) {
+
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
     }
   }
 

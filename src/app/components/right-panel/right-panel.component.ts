@@ -1,4 +1,4 @@
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { dragTypes } from 'src/app/app.component';
 
@@ -15,10 +15,23 @@ export class RightPanelComponent implements OnInit {
   }
 
   @Input() imagesLists: dragTypes[];
+  @Input() playBoookLists: any[];
   @Output() droupEvent = new EventEmitter();
 
   drop(event: CdkDragDrop<string[]>) {
     this.droupEvent.emit(event);
   }
+
+   evenPredicate() {
+
+    console.log(this.playBoookLists.map(res=>`${res.id}`),"playBoookLists");
+
+
+     return  this.playBoookLists.map(res=>`${res.id}`);
+
+
+  }
+
+
 
 }

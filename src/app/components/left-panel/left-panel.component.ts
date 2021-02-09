@@ -18,12 +18,12 @@ export class LeftPanelComponent implements OnInit {
   @Input() sliderLists: dragTypes[];
   @Output() droupEvent = new EventEmitter();
 
-  sliderListColors: dragTypes[] = [
-    { color: "red" },
-    { color: "green" },
-    { color: "blue" },
-    { color: "orange" },
-  ];
+  // sliderListColors: dragTypes[] = [
+  //   { color: "red" },
+  //   { color: "green" },
+  //   { color: "blue" },
+  //   { color: "orange" },
+  // ];
 
   drop(event: CdkDragDrop<string[]>) {
     this.droupEvent.emit(event);

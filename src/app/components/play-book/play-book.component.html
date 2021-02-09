@@ -1,9 +1,85 @@
+<!-- <div cdkDropList
+[cdkDropListData]="groups"
+(cdkDropListDropped)="dropGroup($event)">
+
+	<div cdkDropListGroup class="example-container"
+  *ngFor="let group of groups"
+  cdkDrag [cdkDragData]="group">
+		<h2>{{group.title}}</h2>
+
+		<div cdkDropList class="example-list"
+    id={{group.id}}
+    [cdkDropListData]="group.items"
+    (cdkDropListDropped)="dropItem($event)"
+		[cdkDropListConnectedTo]="getConnectedList()">
+			<div class="example-box"
+      *ngFor="let item of group.items"
+      cdkDrag [cdkDragData]="item">
+				{{item.name}}
+			</div>
+		</div>
+
+	</div>
+
+</div> -->
+
 <div
+  cdkDropList
+  [cdkDropListData]="playBoookLists"
+  id="playBookList"
+  class="playBookContainer"
+  (cdkDropListDropped)="dropGroup($event)"
+>
+	<div
+   cdkDropListGroup
+   *ngFor="let group of playBoookLists"
+
+   [ngStyle]="{'background': group.color}"
+   cdkDrag
+   [cdkDragData]="group"
+   >
+		<div
+    cdkDropList
+    id={{group.id}}
+    class="playBookList"
+    [cdkDropListData]="group.items"
+    [cdkDropListEnterPredicate]="evenPredicate"
+    (cdkDropListDropped)="dropItem($event)"
+    >
+			<div  [ngStyle]="{'background-image': 'url(' + item?.url + ')', 'background-size': 'cover','background-repeat': 'no-repeat','background-position': 'center'}" *ngFor="let item of group.items" cdkDrag [cdkDragData]="item" cdkDragPlaceholder >
+        <!-- {{item.name}} -->
+      </div>
+
+    </div>
+
+	</div>
+
+</div>
+
+
+
+
+
+<!-- <div
       cdkDropList
       id="doneList"
       [cdkDropListData]="playBoookLists"
       cdkDropListConnectedTo="sliderList"
       class="bookContainer"
       (cdkDropListDropped)="drop($event)">
-      <div [ngStyle]="item.color?{'background': item.color} : {'background-image': 'url(' + item?.url + ')', 'background-size': 'cover','background-repeat': 'no-repeat','background-position': 'center'}" *ngFor="let item of playBoookLists" cdkDrag></div>
-</div>
+      <div [ngStyle]="item.color?{'background': item.color} : {'background-image': 'url(' + item?.url + ')', 'background-size': 'cover','background-repeat': 'no-repeat','background-position': 'center'}" *ngFor="let item of playBoookLists" cdkDrag>
+
+        <div
+          cdkDropList
+          id="sliderImage"
+          [cdkDropListData]="images"
+          class="imageContainer"
+          [cdkDropListEnterPredicate]="noReturnPredicate"
+          (cdkDropListDropped)="drop($event)"
+          >
+          <div [ngStyle]="item.color?{'background': item.color} : {'background-image': 'url(' + item?.url + ')', 'background-size': 'cover','background-repeat': 'no-repeat','background-position': 'center'}" *ngFor="let item of images" cdkDrag>
+
+          </div>
+        </div>
+      </div>
+</div> -->
