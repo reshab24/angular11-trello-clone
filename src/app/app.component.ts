@@ -1,11 +1,7 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component } from '@angular/core';
+import { playbookTypes } from './interfaces/playbookTypes';
 
-
-export interface dragTypes {
-  color?: string,
-  url?: string,
-}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,7 +9,7 @@ export interface dragTypes {
 })
 export class AppComponent {
 
-  sliderListColors: any[] = [
+  sliderListColors: playbookTypes[] = [
     {
       id: 1,
       color: "red",
@@ -45,7 +41,7 @@ export class AppComponent {
 
   ];
 
-  playBookList: any[] = [
+  playBookList: playbookTypes[] = [
     {
       id: 5,
       color: "yellow",
@@ -55,7 +51,7 @@ export class AppComponent {
     },
   ];
 
-  images: dragTypes[] = [
+  images: { url: string }[] = [
     { url: "https://picsum.photos/id/27/200/200" },
     { url: "https://picsum.photos/id/28/200/200" },
     { url: "https://picsum.photos/id/29/200/200" },
@@ -65,7 +61,7 @@ export class AppComponent {
   drop(event: CdkDragDrop<string[]>) {
 
     if (event.previousContainer === event.container) {
-      // moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       transferArrayItem(event.previousContainer.data,
         event.container.data,
@@ -91,13 +87,4 @@ export class AppComponent {
       );
     }
   }
-
-  dragged(event) {
-    console.log(event, "events");
-  }
-
-  noReturnPredicate() {
-    return false;
-  }
-
 }

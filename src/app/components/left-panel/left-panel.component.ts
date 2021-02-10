@@ -1,6 +1,6 @@
-import { CdkDragDrop} from '@angular/cdk/drag-drop';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { dragTypes } from 'src/app/app.component';
+import { playbookTypes } from 'src/app/interfaces/playbookTypes';
 
 @Component({
   selector: 'app-left-panel',
@@ -15,15 +15,8 @@ export class LeftPanelComponent implements OnInit {
 
   }
 
-  @Input() sliderLists: dragTypes[];
+  @Input() sliderLists: playbookTypes[];
   @Output() droupEvent = new EventEmitter();
-
-  // sliderListColors: dragTypes[] = [
-  //   { color: "red" },
-  //   { color: "green" },
-  //   { color: "blue" },
-  //   { color: "orange" },
-  // ];
 
   drop(event: CdkDragDrop<string[]>) {
     this.droupEvent.emit(event);

@@ -1,12 +1,12 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-2 col-sm-2">
+    <div class="col-md-2 col-sm-3">
       <app-left-panel [sliderLists]="sliderListColors" (droupEvent)="drop($event)"></app-left-panel>
     </div>
-    <div class="col-md-8 col-sm-8">
+    <div class="col-md-8 col-sm-6">
       <app-play-book [playBoookLists]="playBookList" (droupEvent)="drop($event)" (droupEventGroup)="dropGroup($event)"></app-play-book>
     </div>
-    <div class="col-md-2 col-sm-2">
+    <div class="col-md-2 col-sm-3">
       <app-right-panel [imagesLists]="images" [playBoookLists]="playBookList" (droupEvent)="drop($event)"></app-right-panel>
     </div>
   </div>

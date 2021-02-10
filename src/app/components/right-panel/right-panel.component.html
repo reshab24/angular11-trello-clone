@@ -1,5 +1,12 @@
-<div cdkDropList id="imagesList" #imagesList="cdkDropList" [cdkDropListData]="imagesLists"
-  [cdkDropListConnectedTo]="evenPredicate()" class="imagesContainer" (cdkDropListDropped)="drop($event)">
+<div
+  cdkDropList
+  id="imagesList"
+  [cdkDropListData]="imagesLists"
+  [cdkDropListConnectedTo]="imagesConnectedTo()"
+  class="imagesContainer" (cdkDropListDropped)="drop($event)">
+
+  <h2 class="text-center">Images</h2>
+
   <div
     [ngStyle]="{'background-image': 'url(' + item?.url + ')', 'background-size': 'cover','background-repeat': 'no-repeat','background-position': 'center'}"
     *ngFor="let item of imagesLists" cdkDrag>
