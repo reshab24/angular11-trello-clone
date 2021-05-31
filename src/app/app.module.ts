@@ -9,15 +9,25 @@ import { PlayBookComponent } from './components/play-book/play-book.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from './material/material.module';
+import { CardComponent } from './components/card/card.component';
+import { BoardComponent } from './components/board/board.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FormsModule } from '@angular/forms';
+import { AddEditCardComponent } from './components/add-edit-card/add-edit-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LeftPanelComponent,
     RightPanelComponent,
-    PlayBookComponent
+    PlayBookComponent,
+    CardComponent,
+    BoardComponent,
+    HeaderComponent,
+    AddEditCardComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

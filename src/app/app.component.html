@@ -1,16 +1,24 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-2 col-sm-3">
-      <app-left-panel [sliderLists]="sliderListColors" (droupEvent)="drop($event)"></app-left-panel>
+
+<app-header></app-header>
+
+<div *ngIf="$boardData | async as board">
+    <div cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="board" id="playBookList" (cdkDropListDropped)="drop($event)">
+
+        <div cdkDropListGroup class="board-container">
+
+            <app-board *ngFor="let data of board" [boardData]=data cdkDrag >
+            </app-board>
+            <div class="card">
+         
+                <app-add-edit-card *ngIf="addBoardClick==true;else addBoard" [addBoard]='true' (sendNewData)="getBoardData($event)" (cardStatus)="closeForm()"></app-add-edit-card>
+            
+                <ng-template #addBoard >
+                    <button class="btn btn-secondary p-3 m-2" (click)="addNewBoard()" >
+                        + Add Board
+                    </button>
+                </ng-template>
+
+            </div>
+        </div>
     </div>
-    <div class="col-md-8 col-sm-6">
-      <app-play-book [playBoookLists]="playBookList" (droupEvent)="drop($event)" (droupEventGroup)="dropGroup($event)"></app-play-book>
-    </div>
-    <div class="col-md-2 col-sm-3">
-      <app-right-panel [imagesLists]="images" [playBoookLists]="playBookList" (droupEvent)="drop($event)"></app-right-panel>
-    </div>
-  </div>
 </div>
-
-
-
